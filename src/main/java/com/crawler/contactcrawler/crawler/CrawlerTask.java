@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Semaphore;
 
-// Реализуем Runnable (Критерий 2)
+// Реализуем Runnable
 public class CrawlerTask implements Runnable {
     
     private final String url;
@@ -18,7 +18,7 @@ public class CrawlerTask implements Runnable {
     private final ContactRepository repository;
     private final HtmlParserService parserService;
     private final CrawlLogger logger;
-    private final Semaphore semaphore; // Примитив синхронизации (Критерий 3)
+    private final Semaphore semaphore; // Примитив синхронизации
 
     public CrawlerTask(String url, BlockingQueue<String> urlQueue, ContactRepository repository,
                        HtmlParserService parserService, CrawlLogger logger, Semaphore semaphore) {
@@ -33,7 +33,7 @@ public class CrawlerTask implements Runnable {
     @Override
     public void run() {
         try {
-            // Захватываем семафор, чтобы ограничить кол-во одновременных запросов (Критерий 3)
+            // Захватываем семафор, чтобы ограничить кол-во одновременных запросов
             semaphore.acquire();
             logger.log("Начало обработки URL: " + url + " | Поток: " + Thread.currentThread().getName());
 
@@ -46,7 +46,7 @@ public class CrawlerTask implements Runnable {
             String email = parserService.extractEmail(html);
             String companyName = parserService.extractCompanyName(html);
 
-            // Сохраняем в H2 (Встроенное хранилище - Критерий 4)
+            // Сохраняем в H2
             if (phone != null || email != null) {
                 Contact contact = new Contact();
                 contact.setSourceUrl(url);

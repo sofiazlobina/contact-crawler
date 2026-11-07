@@ -10,12 +10,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 @Component
 public class CrawlLogger {
     
-    // Блокирующая структура для логов (Критерий 3)
+    // Блокирующая структура для логов
     private final BlockingQueue<String> logQueue = new LinkedBlockingQueue<>();
     private final Thread daemonThread;
 
     public CrawlLogger() {
-        // Создаем демон-поток (Критерий 3)
+        // Создаем демон-поток
         daemonThread = new Thread(this::processLogs);
         daemonThread.setDaemon(true); // Делаем поток демоном
         daemonThread.setName("Crawler-Daemon-Logger");
@@ -31,7 +31,7 @@ public class CrawlLogger {
     }
 
     private void processLogs() {
-        // Запись в собственный файл (Критерий 3)
+        // Запись в собственный файл
         try (PrintWriter writer = new PrintWriter(new FileWriter("crawler_logs.txt", true))) {
             while (true) {
                 try {

@@ -41,7 +41,7 @@ public class CrawlerController {
         return ResponseEntity.ok("Краулер запущен! Обрабатывается URL-ов: " + request.getUrls().size());
     }
 
-    // GET endpoint для получения результатов (Критерий 4 - извлечение результатов)
+    // GET endpoint для получения результатов
     @GetMapping("/answer")
     public ResponseEntity<List<ContactResponse>> getContacts(
             @RequestParam(defaultValue = "0") int page,
@@ -51,7 +51,7 @@ public class CrawlerController {
             @RequestParam(defaultValue = "id") String sortBy,
             @RequestParam(defaultValue = "asc") String sortDir) {
         
-        // Сортировка (Критерий 4 - возможность сортировки)
+        // Сортировк
         Sort sort = sortDir.equalsIgnoreCase("desc") ? 
                     Sort.by(sortBy).descending() : 
                     Sort.by(sortBy).ascending();
@@ -59,7 +59,7 @@ public class CrawlerController {
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<Contact> contactsPage = contactRepository.findAll(pageable);
         
-        // Parallel Stream для фильтрации (Критерий 4 - 14 баллов!)
+        // Parallel Stream для фильтрации
         List<ContactResponse> result = contactsPage.getContent()
             .parallelStream()  // Используем Parallel Stream
             .filter(contact -> {

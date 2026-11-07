@@ -27,7 +27,7 @@ public class Contact {
         createdAt = LocalDateTime.now();
     }
 
-    // Ручные геттеры и сеттеры (вместо Lombok)
+    // Ручные геттеры и сеттеры
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getSourceUrl() { return sourceUrl; }

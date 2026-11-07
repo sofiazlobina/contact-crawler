@@ -14,7 +14,7 @@ public class CrawlerService {
     private final HtmlParserService parserService;
     private final CrawlLogger logger;
 
-    // Кастомный ExecutorService (Критерий 3 и 4)
+    // Кастомный ExecutorService
     private ExecutorService executorService;
     private BlockingQueue<String> urlQueue;
     private Semaphore semaphore;
