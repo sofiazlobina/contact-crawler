@@ -1,0 +1,20 @@
+Запуск краулера с 5 потоками.
+Начало обработки URL: https://example.com | Поток: pool-2-thread-1
+Краулер завершил работу.
+Запуск краулера с 3 потоками.
+Начало обработки URL: https://www.google.com/contact/ | Поток: pool-3-thread-1
+Успешно сохранен контакт для: https://www.google.com/contact/
+Краулер завершил работу.
+Ошибка при обработке https://www.google.com/contact/: null
+Запуск краулера с 3 потоками.
+Начало обработки URL: https://www.google.com/contact/ | Поток: pool-2-thread-1
+Успешно сохранен контакт для: https://www.google.com/contact/
+Краулер завершил работу.
+Ошибка при обработке https://www.google.com/contact/: null
+Запуск краулера с 3 потоками.
+Начало обработки URL: https://www.google.com/contact/ | Поток: pool-2-thread-1
+Ошибка при обработке https://www.google.com/contact/: Connection timed out: getsockopt
+Краулер завершил работу.
+Запуск краулера с 1 потоками.
+Начало обработки URL: https://www.google.com/contact/ | Поток: pool-2-thread-1
+Успешно сохранен контакт для: https://www.google.com/contact/
